@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585543807509.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AEC0CC39",
+    "lastKnownWriteTime" : 2434674360152,
+    "last_content_update" : 1585543807509,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "4530AC04",
+        "caption" : "mpg_audi",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=mpg_audi&cache_key=4530AC04",
+        "displayedObservations" : 5,
+        "environment" : "",
+        "expression" : "mpg_audi",
+        "object" : "mpg_audi",
+        "preview" : 0,
+        "totalObservations" : 5,
+        "variables" : 11
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

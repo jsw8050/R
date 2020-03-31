@@ -1,0 +1,148 @@
+df <- data.frame(sex = c("M", "F", NA, "M", "F"),
+                 score = c(5,4,3,4, NA))
+
+df
+
+is.na(df)
+table(is.na(df))
+table(is.na(df$sex))
+table(is.na(df$score))
+mean(df$score)
+sum(df$score)
+
+install.packages("dplyr")
+library(dplyr)
+exam <- read.csv("csv_exam.csv")
+exam
+exam %>% filter(class == 1)
+exam %>% filter(class != 1)
+
+mpg <- data.frame(ggplot2::mpg)
+head(mpg)
+mpg_4 <- mpg %>% filter(displ <=4)
+mpg_5 <- mpg %>% filter(displ >= 5)
+mean(mpg_4$hwy)
+mean(mpg_5$hwy)
+mpg_audi <- mpg %>% filter(manufacturer == "audi")
+mpg_toyota <- mpg %>% filter(manufacturer == "toyota")
+mean(mpg_audi$cty)
+mean(mpg_toyota$cty)
+
+mpgs <- mpg %>% filter(manufacturer =='chevrolet' | manufacturer == 'ford' | manufacturer == "honda")
+head(mpgs)
+mpgs2 <- mpg %>% filter(manufacturer %in% c("chevrolet", "ford", "honda"))
+mpgs2
+mean(mpgs2$hwy)
+
+exam %>% filter(class== 1) %>% 
+                  select(english)
+mpg <- data.frame(ggplot2::mpg)
+mpgNew <- mpg %>% select(class, cty)                             
+head(mpgNew)
+
+ctySuv <- mpgNew %>% 
+  filter(class == "suv")
+ctyCompact <- mpgNew %>% 
+  filter(class == "compact")
+mean(ctyCompact$cty)
+mean(ctySuv$cty)
+
+mpg <- data.frame(ggplot2::mpg)
+mpg_audi <- mpg %>% 
+  filter(manufacturer == "audi") %>% 
+  arrange(desc(hwy)) %>% 
+  head(5)
+head(mpg_audi, 5)
+exam  %>% mutate(test= ifelse(science >=60, "pass", "fail")) %>% 
+  head
+
+
+mpg2 <-mpg %>% 
+  mutate(sum=hwy + cty)
+mpgMean <- mpg2 %>% 
+  mutate(mean=sum/2) %>% 
+  arrange(desc(mean)) %>% 
+  head(3)
+
+mpg <- data.frame(ggplot2::mpg)
+mpg %>% 
+  group_by(manufacturer, drv) %>% 
+  summarise(mean_cty = mean(cty)) %>% 
+  head(10)
+
+
+mpg %>% 
+  group_by(manufacturer) %>% 
+  filter(class == "suv") %>% 
+  mutate(tot = (cty+hwy)/2) %>%
+  summarise(mean_tot = mean(tot)) %>% 
+  arrange(desc(tot)) %>% 
+  head(5)
+
+mpg %>% 
+  group_by(class) %>% 
+  summarise(mean_city = mean(cty)) %>% 
+  arrange(desc(mean_city))
+
+mpg %>% 
+  group_by(manufacturer) %>% 
+  summarise(mean_hwy = mean(hwy)) %>% 
+  arrange(desc(mean_hwy)) %>% 
+  head(3)
+
+mpg %>% 
+  filter(class == "compact") %>% 
+  group_by(manufacturer) %>% 
+  summarise(num = n()) %>% 
+  arrange(desc(num))
+
+
+fuel <- data.frame(fl = c("c", "d", "e", "p", "r"),
+                   price_fl = c(2.35, 2.38, 2.11, 2.76, 2.22),
+                   stringsAsFactors = F)
+mpg_fl <- left_join(mpg, fuel, by = "fl")
+mpg_fl_N <- mpg_fl %>% 
+  select(model, fl, price_fl) %>% 
+  head(5)
+mpg_fl_N
+
+midwest <- data.frame(ggplot2::midwest)
+midwest <- midwest %>% 
+  mutate(tot = (poptotal - popadults)/poptotal*100) %>%
+  arrange(desc(tot)) %>%
+  select(county, tot)
+midwest_new
+
+midwest <- midwest %>% mutate(grade = ifelse(tot >= 40, "large",
+                                       ifelse(tot >=30, "middle", "small")))
+
+
+midwest
+table(midwest$grade)
+
+midwest <- data.frame(ggplot2::midwest)
+head(midwest)
+
+midwest <- midwest %>% 
+  mutate(ratio_asian = (popasian/poptotal)*100) %>% 
+  arrange(ratio_asian) %>%
+  select(state, county, ratio_asian) %>% 
+  head(10)
+
+df <- data.frame(sex = c("M", "F", NA, "M", "F"),
+                 score = c(5,4,3,4, NA))
+df
+is.na(df)
+table(is.na(df))
+
+table(is.na(df$sex))
+table(is.na(df$score))
+mean(df$score)
+library
+
+
+
+
+
+
+
